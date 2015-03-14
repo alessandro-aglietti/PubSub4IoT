@@ -1,11 +1,6 @@
 var http = require('http');
 var btoa = require('btoa');
 var atob = require('atob');
-/*
- * http.createServer(function handler(req, res) { res.writeHead(200,
- * {'Content-Type': 'text/plain'}); res.end('Hello World\n'); }).listen(1337,
- * '127.0.0.1');
- */
 
 var google = require('googleapis');
 var pubsub = google.pubsub('v1beta2');
