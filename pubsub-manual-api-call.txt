@@ -1,0 +1,71 @@
+http://developers.google.com/apis-explorer/?hl=en_US#p/pubsub/v1beta2/
+
+projects/potent-poetry-86911/topics/baby
+
+projects/potent-poetry-86911/subscriptions/paolo
+{
+  "topic": "projects/potent-poetry-86911/topics/baby"
+}
+
+
+
+projects/potent-poetry-86911/subscriptions/beppe
+{
+  "topic": "projects/potent-poetry-86911/topics/beppe",
+  "ackDeadlineSeconds": 60
+}
+
+projects/potent-poetry-86911/subscriptions/anna
+{
+  "topic": "projects/potent-poetry-86911/topics/anna",
+  "ackDeadlineSeconds": 60
+}
+
+projects/potent-poetry-86911/subscriptions/admin
+{
+  "topic": "projects/potent-poetry-86911/topics/admin",
+  "ackDeadlineSeconds": 60
+}
+
+
+projects/potent-poetry-86911/subscriptions/beppeall
+{
+  "topic": "projects/potent-poetry-86911/topics/beppe",
+  "ackDeadlineSeconds": 60
+}
+
+projects/potent-poetry-86911/subscriptions/annaall
+{
+  "topic": "projects/potent-poetry-86911/topics/anna",
+  "ackDeadlineSeconds": 60
+}
+
+Pronti?
+projects/potent-poetry-86911/topics/admin
+{
+  "messages": [
+    {
+      "data": "UHJvbnRpPw==",
+    }
+  ],
+}
+
+Beppe inizia a contare
+projects/potent-poetry-86911/topics/beppe
+{
+  "messages": [
+    {
+      "data": "QmVwcGUgaW5pemlhIGEgY29udGFyZQ==",
+    }
+  ],
+}
+
+Anna inizia a contare
+projects/potent-poetry-86911/topics/anna
+{
+  "messages": [
+    {
+      "data": "QW5uYSBpbml6aWEgYSBjb250YXJl",
+    }
+  ],
+}

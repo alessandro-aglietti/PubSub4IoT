@@ -2,7 +2,7 @@
   "name": "node-iot",
   "version": "0.1.0",
   "description": "node-iot",
-  "main": "hello-world-server.njs",
+  "main": "all-with-module.njs",
   "scripts": {
     "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
   },
@@ -10,11 +10,12 @@
   "keywords": [
     "node.js",
     "eclipse",
-    "nodeclipse"
+    "nodeclipse",
+	"intel edison"
   ],
   "author": "",
   "license": "MIT",
-  "readmeFilename": "README.md",
+  "readmeFilename": "README.txt",
   "dependencies": {
     "atob": "^1.1.2",
     "btoa": "^1.1.2",
