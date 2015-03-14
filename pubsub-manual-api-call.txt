@@ -69,3 +69,15 @@ projects/potent-poetry-86911/topics/anna
     }
   ],
 }
+
+
+#### PUSHHHH
+projects/potent-poetry-86911/subscriptions/annapush
+{
+  "topic": "projects/potent-poetry-86911/topics/anna",
+  "pushConfig": 
+  {
+    "pushEndpoint": "https://potent-poetry-86911.appspot.com/"
+  }
+}
+
