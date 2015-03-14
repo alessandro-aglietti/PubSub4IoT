@@ -1,6 +1,8 @@
 .jshintrc
 .project
 node-iot/.settings
+node-iot/node_modules
+!node-iot/node_modules/googleapis/apis/pubsub/v1beta2.js
 p12
 pubsub-gae/pubsub-gae/.settings
 pubsub-gae/pubsub-gae/war/WEB-INF/lib/appengine-api-1.0-sdk-1.9.18.jar
