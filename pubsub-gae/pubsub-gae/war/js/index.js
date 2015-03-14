@@ -14,9 +14,7 @@ function onOpened() {
 function onMessage(message) {
 	var msg = JSON.parse(message.data.trim());
 	
-	var str = JSON.stringify(msg);
-
-	$("#console").prepend("<p>" + str + "</p>");
+	$("#console").prepend("<p><b>" + msg.subscription + ":</b> <i>" + msg.message + "</i></p>");
 }
 
 function onError(error) {
