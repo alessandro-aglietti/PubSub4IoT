@@ -17,11 +17,17 @@ var jwtClient = new google.auth.JWT(
 		'835550676211-5cd1go92306lp54ej68hguiibtaf58a6@developer.gserviceaccount.com',
 		'../p12/key.pem', null, [ scope1, scope2 ]);
 
+
 var BEPPE_TOPIC = "projects/potent-poetry-86911/topics/beppe";
-var ANNA_TOPIC = "projects/potent-poetry-86911/topics/anna";
+var BEPPE_ALL_SUB = "projects/potent-poetry-86911/subscriptions/beppeall";
 var BEPPE_SUB = "projects/potent-poetry-86911/subscriptions/beppe";
+
+
 var ANNA_SUB = "projects/potent-poetry-86911/subscriptions/anna";
-var ADMIN_SUB = "projects/potent-poetry-86911/subscriptions/admin";
+var ANNA_TOPIC = "projects/potent-poetry-86911/topics/anna";
+var ANNA_ALL_SUB = "projects/potent-poetry-86911/subscriptions/annaall";
+
+
 
 function pull(sub, callback) {
 	pubsub.projects.subscriptions.pull({
@@ -74,7 +80,7 @@ function pullLoop(sub, parseCallback) {
 			console.log(err);
 		}
 
-		pullLoop(sub);
+		pullLoop(sub, parseCallback);
 	});
 }
 
@@ -82,19 +88,14 @@ jwtClient.authorize(function(err, tokens) {
 	if (err === null) {
 		console.log(tokens);
 
-		pullLoop(ANNA_SUB, function(msg){
+		pullLoop(ANNA_ALL_SUB, function(msg){
 			var clearData = atob(msg.message.data);
 			console.log("Anna: " + clearData);
 		});
 		
-		pullLoop(BEPPE_SUB, function(msg){
+		pullLoop(BEPPE_ALL_SUB, function(msg){
 			var clearData = atob(msg.message.data);
 			console.log("Beppe: " + clearData);
-		});
-		
-		pullLoop(ADMIN_SUB, function(msg){
-			var clearData = atob(msg.message.data);
-			console.log("Admin: " + clearData);
 		});
 
 	} else {
