@@ -46,10 +46,10 @@ function parse(msg) {
 	console.log("parse: " + clearData);
 	switch (clearData) {
 	case "Pronti?":
-		publishToTopic("Si!", BEPPE_TOPIC);
+		publishToTopic("Si!", ANNA_TOPIC);
 		break;
-	case "Beppe inizia a contare":
-		publishToTopic(1, ANNA_TOPIC);
+	case "Anna inizia a contare":
+		publishToTopic(1, BEPPE_TOPIC);
 		break;
 	default:
 		var count = parseInt(clearData, 10);
@@ -57,7 +57,7 @@ function parse(msg) {
 		count++;
 
 		if (count < 11) {
-			publishToTopic(count, ANNA_TOPIC);
+			publishToTopic(count, BEPPE_TOPIC);
 		}
 		break;
 	}
@@ -123,9 +123,9 @@ jwtClient.authorize(function(err, tokens) {
 	if (err === null) {
 		console.log(tokens);
 
-		publishToTopic("Beppe pronto", BEPPE_TOPIC);
+		publishToTopic("Anna pronta", ANNA_TOPIC);
 
-		pullLoop(BEPPE_SUB, parse);
+		pullLoop(ANNA_SUB, parse);
 
 	} else {
 		console.log(err);
