@@ -45,6 +45,7 @@ board.on("ready", function() {
 	}
 	
 	lowerArm();
+	
 
 	function raiseArmForDuration(duration) {
 		if (!raiseMutex) {
@@ -58,6 +59,8 @@ board.on("ready", function() {
 			console.log("Mutex is set: not raising arm");
 		}
 	}
+	
+	raiseArmForDuration(1000);
 
 	function parse(msg) {
 		var clearData = atob(msg.message.data);
