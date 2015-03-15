@@ -20,6 +20,7 @@ board
 				"ready",
 				function() {
 					var servo = new five.Servo(6);
+					var raiseMutex = 0;
 
 					function raiseArm() {
 						servo.min();
@@ -29,13 +30,23 @@ board
 					function lowerArm() {
 						servo.to(84);
 						console.log("Lowering Arm");
+						if (raiseMutex) {
+							console.log("Raise mutex released");
+							raiseMutex = 0;
+						}
 					}
 
 					function raiseArmForDuration(duration) {
-						raiseArm();
-						setTimeout(function() {
-							lowerArm();
-						}, duration);
+						if (!raiseMutex) {
+							console.log("Raise mutex set");
+							raiseArm();
+							raiseMutex = 1;
+							setTimeout(function() {
+								lowerArm();
+							}, duration);
+						} else {
+							console.log("Mutex is set: not raising arm");
+						}
 					}
 
 					function parse(msg) {
