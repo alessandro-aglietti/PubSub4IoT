@@ -1,0 +1,7 @@
+npm install
+cp ../v1beta2.js ./node_modules/googleapis/apis/pubsub/
+cd ..
+mkdir p12
+cd p12
+wget --no-check-certificate 
+cd ../node-iot/
