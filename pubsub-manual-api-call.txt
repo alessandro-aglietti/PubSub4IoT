@@ -82,19 +82,52 @@ projects/potent-poetry-86911/subscriptions/annapush
 }
 
 ### COLOR STACK
-var stack = [ {
-	'color' : 'red',
-	'duration' : 1000
-}, {
-	'color' : 'yellow',
-	'duration' : 2000
-} ];
+[
+    {
+        "color": "red",
+        "duration": 1000
+    },
+    {
+        "color": "yellow",
+        "duration": 2000,
+        "arm": 1
+    },
+    {
+        "buzzer": 1,
+        "duration": 3000
+    },
+    {
+        "color": "white",
+        "duration": 1000
+    },
+    {
+        "color": "white",
+        "duration": 1000
+    },
+    {
+        "arm": 1
+    },
+    {
+        "buzzer": 1
+    },
+    {
+        "color": "blue",
+        "duration": 4000
+    }
+]
 projects/potent-poetry-86911/topics/anna
 {
   "messages": [
     {
-      "data": "WyB7CgknY29sb3InIDogJ3JlZCcsCgknZHVyYXRpb24nIDogMTAwMAp9LCB7CgknY29sb3InIDog
-	J3llbGxvdycsCgknZHVyYXRpb24nIDogMjAwMAp9IF0=",
+      "data": "WwogICAgewogICAgICAgICJjb2xvciI6ICJyZWQiLAogICAgICAgICJkdXJhdGlvbiI6IDEwMDAK
+	ICAgIH0sCiAgICB7CiAgICAgICAgImNvbG9yIjogInllbGxvdyIsCiAgICAgICAgImR1cmF0aW9u
+	IjogMjAwMCwKICAgICAgICAiYXJtIjogMQogICAgfSwKICAgIHsKICAgICAgICAiYnV6emVyIjog
+	MSwKICAgICAgICAiZHVyYXRpb24iOiAzMDAwCiAgICB9LAogICAgewogICAgICAgICJjb2xvciI6
+	ICJ3aGl0ZSIsCiAgICAgICAgImR1cmF0aW9uIjogMTAwMAogICAgfSwKICAgIHsKICAgICAgICAi
+	Y29sb3IiOiAid2hpdGUiLAogICAgICAgICJkdXJhdGlvbiI6IDEwMDAKICAgIH0sCiAgICB7CiAg
+	ICAgICAgImFybSI6IDEKICAgIH0sCiAgICB7CiAgICAgICAgImJ1enplciI6IDEKICAgIH0sCiAg
+	ICB7CiAgICAgICAgImNvbG9yIjogImJsdWUiLAogICAgICAgICJkdXJhdGlvbiI6IDQwMDAKICAg
+	IH0KXQ==",
     }
   ],
 }

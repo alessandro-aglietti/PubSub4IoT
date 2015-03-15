@@ -18,8 +18,22 @@ function parse(msg) {
 
 	if (stack !== null && stack.length > 0) {
 		var popped = stack.pop();
-		lcd.setColor(popped.color, popped.duration);
 
+		if (popped.color) {
+			lcd.setColor(popped.color, popped.duration || 1000);
+		}
+
+		if (popped.arm) {
+			// arm
+			console.log("arm");
+		}
+
+		if (popped.buzzer) {
+			// buzzer popped.duration || 1000
+			console.log("buzzer");
+		}
+
+		// CHANGE TO NEXT Edison TOPIC
 		pubsub.pub(JSON.stringify(stack), ANNA_TOPIC);
 	}
 }
