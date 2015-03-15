@@ -7,6 +7,8 @@ var ANNA_TOPIC = "projects/potent-poetry-86911/topics/anna";
 var BEPPE_SUB = "projects/potent-poetry-86911/subscriptions/beppe";
 var ANNA_SUB = "projects/potent-poetry-86911/subscriptions/anna";
 
+// npm instal johnny-five galileo-io
+
 var five = require("johnny-five");
 var Edison = require("galileo-io");
 var board = new five.Board({
