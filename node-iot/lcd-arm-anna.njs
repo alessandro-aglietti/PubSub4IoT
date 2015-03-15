@@ -15,79 +15,84 @@ var board = new five.Board({
 	io : new Edison()
 });
 
-board
-		.on(
-				"ready",
-				function() {
-					var servo = new five.Servo(6);
-					var raiseMutex = 0;
+var parseee = null;
 
-					function raiseArm() {
-						servo.min();
-						console.log("Raising Arm");
-					}
+function go() {
+	var SERVICE_ACCOUNT = '835550676211-5cd1go92306lp54ej68hguiibtaf58a6@developer.gserviceaccount.com';
+	var PEM_PATH = '../p12/key.pem';
 
-					function lowerArm() {
-						servo.to(84);
-						console.log("Lowering Arm");
-						if (raiseMutex) {
-							console.log("Raise mutex released");
-							raiseMutex = 0;
-						}
-					}
+	pubsub.auth(PEM_PATH, SERVICE_ACCOUNT, function() {
+		pubsub.pub("Anna pronta", ANNA_TOPIC);
 
-					function raiseArmForDuration(duration) {
-						if (!raiseMutex) {
-							console.log("Raise mutex set");
-							raiseArm();
-							raiseMutex = 1;
-							setTimeout(function() {
-								lowerArm();
-							}, duration);
-						} else {
-							console.log("Mutex is set: not raising arm");
-						}
-					}
+		pubsub.sub(ANNA_SUB, parseee);
+	});
+}
 
-					function parse(msg) {
-						var clearData = atob(msg.message.data);
-						var stack = null;
-						try {
-							stack = JSON.parse(clearData);
-						} catch (e) {
-							console.log('JSON.parse failed');
-						}
+board.on("ready", function() {
+	var servo = new five.Servo(6);
+	var raiseMutex = 0;
 
-						if (stack !== null && stack.length > 0) {
-							var popped = stack.pop();
+	function raiseArm() {
+		servo.min();
+		console.log("Raising Arm");
+	}
 
-							if (popped.color) {
-								lcd.setColor(popped.color,
-										popped.duration || 1000);
-							}
+	function lowerArm() {
+		servo.to(84);
+		console.log("Lowering Arm");
+		if (raiseMutex) {
+			console.log("Raise mutex released");
+			raiseMutex = 0;
+		}
+	}
 
-							if (popped.arm) {
-								// arm
-								console.log("arm");
-								raiseArmForDuration(popped.duration || 1000);
-							}
+	function raiseArmForDuration(duration) {
+		if (!raiseMutex) {
+			console.log("Raise mutex set");
+			raiseArm();
+			raiseMutex = 1;
+			setTimeout(function() {
+				lowerArm();
+			}, duration);
+		} else {
+			console.log("Mutex is set: not raising arm");
+		}
+	}
 
-							if (popped.buzzer) {
-								// buzzer popped.duration || 1000
-								console.log("buzzer");
-							}
+	function parse(msg) {
+		var clearData = atob(msg.message.data);
+		var stack = null;
+		try {
+			stack = JSON.parse(clearData);
+		} catch (e) {
+			console.log('JSON.parse failed');
+		}
 
-							// CHANGE TO NEXT Edison TOPIC
-							pubsub.pub(JSON.stringify(stack), ANNA_TOPIC);
-						}
-					}
+		if (stack !== null && stack.length > 0) {
+			var popped = stack.pop();
 
-					var SERVICE_ACCOUNT = '835550676211-5cd1go92306lp54ej68hguiibtaf58a6@developer.gserviceaccount.com';
-					var PEM_PATH = '../p12/key.pem';
+			if (popped.color) {
+				lcd.setColor(popped.color, popped.duration || 1000);
+			}
 
-					pubsub.auth(PEM_PATH, SERVICE_ACCOUNT, function() {
-						pubsub.pub("Anna pronta", ANNA_TOPIC);
+			if (popped.arm) {
+				// arm
+				console.log("arm");
+				raiseArmForDuration(popped.duration || 1000);
+			}
 
-						pubsub.sub(ANNA_SUB, parse);
-					});
-				});
+			if (popped.buzzer) {
+				// buzzer popped.duration || 1000
+				console.log("buzzer");
+			}
+
+			// CHANGE TO NEXT Edison TOPIC
+			pubsub.pub(JSON.stringify(stack), ANNA_TOPIC);
+		}
+	}
+
+	parseee = parse;
+
+	go();
+
+});
