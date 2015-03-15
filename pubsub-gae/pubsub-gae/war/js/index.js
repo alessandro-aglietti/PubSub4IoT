@@ -21,8 +21,12 @@ function onMessage(message) {
 	}
 
 	var nome = msg.subscription.substr(1, msg.subscription.indexOf('push') - 1);
-
-	var stack = msg.message;
+	var stack = null;
+	try {
+		stack =  JSON.parse(msg.message);
+	} catch (e) {
+		stack = msg.message;
+	}
 	var messaggio = '';
 
 	if (stack !== null && stack.length > 0) {
