@@ -45,6 +45,8 @@ board.on("ready", function() {
 			raiseMutex = 0;
 		}
 	}
+	
+	lowerArm();
 
 	function raiseArmForDuration(duration) {
 		if (!raiseMutex) {
