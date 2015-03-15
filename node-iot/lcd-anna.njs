@@ -8,12 +8,20 @@ var BEPPE_SUB = "projects/potent-poetry-86911/subscriptions/beppe";
 var ANNA_SUB = "projects/potent-poetry-86911/subscriptions/anna";
 
 function parse(msg) {
-	var stack = JSON.parse(atob(msg.message.data));
+	var clearData = atob(msg.message.data);
+	var stack = null;
+	try {
+		stack = JSON.parse(clearData);
+	} catch (e) {
+		console.log('JSON.parse failed');
+	}
 
-	var popped = stack.pop();
-	lcd.setColor(popped.color, popped.duration);
+	if (stack !== null) {
+		var popped = stack.pop();
+		lcd.setColor(popped.color, popped.duration);
 
-	pubsub.pub(JSON.stringify(stack), ANNA_TOPIC);
+		pubsub.pub(JSON.stringify(stack), ANNA_TOPIC);
+	}
 }
 
 var SERVICE_ACCOUNT = '835550676211-5cd1go92306lp54ej68hguiibtaf58a6@developer.gserviceaccount.com';
