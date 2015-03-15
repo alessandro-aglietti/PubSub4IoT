@@ -22,3 +22,6 @@ $ npm install
 $ cp ../v1beta2.js ./node_modules/googleapis/apis/pubsub/
 $ co your-private.pem /to/path/used/by/your/client
 $ node yourfile.njs
+
+Tool to manage Intel Edison over USB
+https://www.npmjs.com/package/bloop
