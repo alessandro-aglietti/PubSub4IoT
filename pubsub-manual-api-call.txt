@@ -1,10 +1,10 @@
 http://developers.google.com/apis-explorer/?hl=en_US#p/pubsub/v1beta2/
 
-projects/potent-poetry-86911/topics/baby
+projects/potent-poetry-86911/topics/gianni
 
-projects/potent-poetry-86911/subscriptions/paolo
+projects/potent-poetry-86911/subscriptions/gianni
 {
-  "topic": "projects/potent-poetry-86911/topics/baby"
+  "topic": "projects/potent-poetry-86911/topics/gianni"
 }
 
 
