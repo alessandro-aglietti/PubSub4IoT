@@ -90,7 +90,7 @@ board.on("ready", function() {
 			}
 
 			// CHANGE TO NEXT Edison TOPIC
-			pubsub.pub(JSON.stringify(stack), ANNA_TOPIC);
+			pubsub.pub(JSON.stringify(stack), BEPPE_TOPIC);
 		}
 	}
 
