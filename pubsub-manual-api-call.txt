@@ -81,3 +81,21 @@ projects/potent-poetry-86911/subscriptions/annapush
   }
 }
 
+### COLOR STACK
+var stack = [ {
+	color : 'red',
+	duration : 1000
+}, {
+	color : 'yellow',
+	duration : 2000
+} ];
+projects/potent-poetry-86911/topics/anna
+{
+  "messages": [
+    {
+      "data": "WyB7Cgljb2xvciA6ICdyZWQnLAoJZHVyYXRpb24gOiAxMDAwCn0sIHsKCWNvbG9yIDogJ3llbGxv
+	dycsCglkdXJhdGlvbiA6IDIwMDAKfSBd",
+    }
+  ],
+}
+
