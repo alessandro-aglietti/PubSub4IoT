@@ -16,7 +16,7 @@ function parse(msg) {
 		console.log('JSON.parse failed');
 	}
 
-	if (stack !== null) {
+	if (stack !== null && stack.size > 0) {
 		var popped = stack.pop();
 		lcd.setColor(popped.color, popped.duration);
 
