@@ -16,44 +16,49 @@ function onMessage(message) {
 	try {
 		msg = JSON.parse(message.data.trim());
 		console.info(msg);
-	} catch(e) {
+	} catch (e) {
 		console.log('JSON.parse failed:', data);
 	}
 
-	var nome = msg.subscription.substr(1, msg.subscription.indexOf('push') -1);
+	var nome = msg.subscription.substr(1, msg.subscription.indexOf('push') - 1);
 
 	var stack = msg.message;
 	var messaggio = '';
 
 	if (stack !== null && stack.length > 0) {
-		var popped = stack.pop();
-		var dur = popped.duration || 1000;
-		if (popped.color) {
-			document.getElementById('scheda-' + nome).style.borderColor = popped.color;
-			setTimeout(function() {
-				document.getElementById('scheda-' + nome).style.borderColor = 'white';
-			}, dur);
-			messaggio += 'LCD [' + popped.color +  '], ';
-		}
 
-		if (popped.arm) {
-			document.getElementById('forchetta-' + nome).style.visibility = 'visible';
-			setTimeout(function() {
-				document.getElementById('forchetta-' + nome).style.visibility = 'hidden';
-			}, dur);
-			messaggio += 'Raise fork, ';
-		}
+		if (typeof stack == "string") {
+			messaggio = stack;
+		} else {
+			var popped = stack.pop();
+			var dur = popped.duration || 1000;
+			if (popped.color) {
+				document.getElementById('scheda-' + nome).style.borderColor = popped.color;
+				setTimeout(
+						function() {
+							document.getElementById('scheda-' + nome).style.borderColor = 'white';
+						}, dur);
+				messaggio += 'LCD [' + popped.color + '], ';
+			}
 
-		if (popped.buzzer) {
+			if (popped.arm) {
+				document.getElementById('forchetta-' + nome).style.visibility = 'visible';
+				setTimeout(
+						function() {
+							document.getElementById('forchetta-' + nome).style.visibility = 'hidden';
+						}, dur);
+				messaggio += 'Raise fork, ';
+			}
 
-		}
+			if (popped.buzzer) {
 
-		if (dur) {
-			messaggio += 'Dur: ' + dur + 'ms';
+			}
+
+			if (dur) {
+				messaggio += 'Dur: ' + dur + 'ms';
+			}
 		}
 	}
-
-
 
 	var newRow = document.createElement('tr');
 	var newSender = document.createElement('td');
