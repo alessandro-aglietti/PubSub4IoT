@@ -19,12 +19,7 @@ board
 		.on(
 				"ready",
 				function() {
-
-					var button = new five.Button(4);
 					var servo = new five.Servo(6);
-					var piezo = new five.Piezo(3);
-
-					piezo.off();
 
 					function raiseArm() {
 						servo.min();
@@ -41,17 +36,6 @@ board
 						setTimeout(function() {
 							lowerArm();
 						}, duration);
-					}
-
-					function bip(duration) {
-						piezo.play({
-							song : "A",
-							beats : 1 / 4,
-							tempo : 1
-						});
-						setTimeout(function() {
-							piezo.off();
-						}, duration * 10);
 					}
 
 					function parse(msg) {
