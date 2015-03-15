@@ -15,16 +15,14 @@ var board = new five.Board({
 	io : new Edison()
 });
 
-var parseee = null;
-
-function go() {
+function go(parse) {
 	var SERVICE_ACCOUNT = '835550676211-5cd1go92306lp54ej68hguiibtaf58a6@developer.gserviceaccount.com';
 	var PEM_PATH = '../p12/key.pem';
 
 	pubsub.auth(PEM_PATH, SERVICE_ACCOUNT, function() {
 		pubsub.pub("Anna pronta", ANNA_TOPIC);
 
-		pubsub.sub(ANNA_SUB, parseee);
+		pubsub.sub(ANNA_SUB, parse);
 	});
 }
 
@@ -93,8 +91,6 @@ board.on("ready", function() {
 		}
 	}
 
-	parseee = parse;
-
-	go();
+	go(parse);
 
 });
