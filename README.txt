@@ -21,3 +21,20 @@ https://twitter.com/lenovoitalia/status/577161501204680704
 https://twitter.com/BeMyAppItaly/status/576661196000124929
 https://twitter.com/BeMyAppItaly/status/576673953592295424
 https://twitter.com/BeMyAppItaly/status/576663720857886721
+
+per poschishno
+brew install node
+npm install bloop
+
+disconnet
+bloop clean
+
+
+list
+bloop list
+
+connect
+bloop -c
+
+
+# configure_edison --wifi
