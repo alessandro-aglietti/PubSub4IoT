@@ -21,3 +21,6 @@ https://twitter.com/lenovoitalia/status/577161501204680704
 https://twitter.com/BeMyAppItaly/status/576661196000124929
 https://twitter.com/BeMyAppItaly/status/576673953592295424
 https://twitter.com/BeMyAppItaly/status/576663720857886721
+
+On Intel iQ
+http://iq.intel.it/lintel-iot-roadshow-hackathon-a-milano-una-maratona-per-sviluppatori-iot/
